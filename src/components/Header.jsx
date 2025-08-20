@@ -19,7 +19,7 @@ function Header() {
             <div>
                 <label htmlFor="search" className='ml-2'>Search your favorite dish:</label><br />
                 <div className='relative flex w-full'>
-                    <FaSearch className='absolute left-4 top-6 text-lg'/>
+                    <FaSearch className='absolute left-4 top-6 text-lg text-sky-500'/>
                     <input type="text" placeholder='Search...' maxLength={43} name='search' id='search' className='w-96 border rounded-full p-3 px-10 mt-2' />
                     <button className='bg-sky-500 hover:bg-sky-600 rounded-full absolute right-1 top-3 px-4 py-2 text-white font-bold'>Search</button>
                 </div>

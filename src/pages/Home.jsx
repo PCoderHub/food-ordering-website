@@ -1,6 +1,7 @@
 import React from 'react'
 import { foodCategories } from '../assets/utils/foodCategories'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
             </div>)}
             </div>
         </main>
+        <Footer />
     </>
   )
 }
