@@ -1,8 +1,20 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { saveMenuItem } from "../features/item/itemSlice";
 
 function ItemCard({ item }) {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(saveMenuItem(item));
+    navigate(`/menu/${item.id}`)
+  }
+
   return (
-    <div className="h-96 p-1 border rounded-md border-solid border-black hover:scale-102">
+    <div className="h-96 p-1 border rounded-md border-solid border-black hover:scale-102" onClick={handleClick}>
       <img src={item.img} className="w-full h-2/3 object-cover rounded-sm" />
       <div className="p-1 py-2">
         <p className="text-gray-700 font-bold">{item.name}</p>

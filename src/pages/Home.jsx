@@ -26,7 +26,7 @@ function Home() {
               id="search"
               className="w-96 border rounded-full p-3 px-10 mt-2"
             />
-            <button className="bg-sky-500 hover:bg-sky-600 rounded-full absolute right-1 top-3 px-4 py-2 text-white font-bold">
+            <button className="bg-sky-500 hover:bg-sky-600 rounded-full absolute right-1 top-[13px] px-4 py-2 text-white font-bold">
               Search
             </button>
           </div>
