@@ -35,17 +35,17 @@ function Home() {
       <div className="bg-white p-2 mt-20">
         <div className="container mx-auto px-4">
           <h2 className="font-bold text-4xl text-gray-700 my-5">Featured</h2>
-          <div className="grid grid-cols-4 gap-4 mb-2">
+          <div className="grid grid-cols-4">
             {foodCategories.map((category) => (
               <div
                 key={category.id}
-                className="h-80 p-1 border rounded-md border-solid border-black hover:scale-102"
+                className="flex w-5/6 h-2/3 p-1 border rounded-md border-solid border-black hover:scale-102"
               >
                 <img
                   src={category.img}
-                  className="w-full h-2/3 object-cover rounded-sm"
+                  className="w-1/2 object-cover rounded-sm"
                 />
-                <p className="text-center mt-10 font-bold">{category.name}</p>
+                <p className="text-center my-auto ml-2 font-bold">{category.name}</p>
               </div>
             ))}
           </div>
