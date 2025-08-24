@@ -11,9 +11,6 @@ function Header() {
           <h1 className="m-1 font-bold text-4xl text-[#0941ec]">Hungerly</h1>
         </Link>
         <div className="mt-4">
-          <Link to="/menu" className="bg-gray-100 border rounded-sm px-2 py-1 text-sky-600 mr-1 hover:scale-105">
-            Menu
-          </Link>
           <Link className="bg-gray-100 border rounded-sm px-2 py-1 text-sky-600 ml-1 hover:scale-105">
             Sign Up/Log In
           </Link>

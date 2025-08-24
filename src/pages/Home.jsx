@@ -1,8 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { foodCategories } from "../assets/utils/foodCategories";
 import { FaSearch } from "react-icons/fa";
+import ItemCard from "../components/ItemCard";
 
 function Home() {
+  const [error, setError] = useState("");
+
+  const allFoodItems = [];
+  foodCategories.forEach((category) => {
+    category.items.forEach((item) => {
+      allFoodItems.push(item);
+    });
+  });
+
+  const [searchedList, setSearchedList] = useState([...allFoodItems]);
+
+  const handleSearch = (e) => {
+    let searchInput = e.target.value;
+    if (!searchInput.trim()) {
+      setSearchedList([...allFoodItems]);
+      setError("");
+      return;
+    }
+
+    const searchedFoodList = allFoodItems.filter((item) =>
+      item.name.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    if (searchedFoodList.length === 0) {
+      setError("No such dish found!!");
+      setSearchedList([]);
+    } else {
+      setError("");
+      setSearchedList([...searchedFoodList]);
+    }
+  };
+
   return (
     <>
       <img
@@ -25,17 +57,15 @@ function Home() {
               name="search"
               id="search"
               className="w-96 border rounded-full p-3 px-10 mt-2"
+              onChange={handleSearch}
             />
-            <button className="bg-sky-500 hover:bg-sky-600 rounded-full absolute right-1 top-[13px] px-4 py-2 text-white font-bold">
-              Search
-            </button>
           </div>
         </div>
       </div>
       <div className="bg-white p-2 mt-20">
         <div className="container mx-auto px-4">
           <h2 className="font-bold text-4xl text-gray-700 my-5">Featured</h2>
-          <div className="grid grid-cols-4">
+          <div className="grid grid-cols-8">
             {foodCategories.map((category) => (
               <div
                 key={category.id}
@@ -45,9 +75,21 @@ function Home() {
                   src={category.img}
                   className="w-1/2 object-cover rounded-sm"
                 />
-                <p className="text-center my-auto ml-2 font-bold">{category.name}</p>
+                <p className="text-center text-xs my-auto ml-2 font-bold">
+                  {category.name}
+                </p>
               </div>
             ))}
+          </div>
+          <h2 className="font-bold text-4xl text-gray-700 my-5">Menu</h2>
+          <div className="grid grid-cols-4 gap-4 my-4 mt-10">
+            {searchedList.length > 0 ? (
+              searchedList.map((item) => <ItemCard key={item.id} item={item} />)
+            ) : (
+              <p className="text-lg text-center mx-auto text-red-500 italic">
+                {error}
+              </p>
+            )}
           </div>
         </div>
       </div>
