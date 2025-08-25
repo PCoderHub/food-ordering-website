@@ -5,7 +5,7 @@ import { FaInstagram } from "react-icons/fa";
 
 function Footer() {
   return (
-    <div className="bg-gray-500 mt-20">
+    <footer className="bg-gray-500 mt-20">
       <div className="flex flex-col">
         <button className="m-1 text-white hover:underline hover:text-sky-500">
           About Us
@@ -22,7 +22,7 @@ function Footer() {
         </div>
         <p className="text-white m-2">&copy;2025 Hungerly</p>
       </div>
-    </div>
+    </footer>
   );
 }
 
