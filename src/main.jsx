@@ -7,6 +7,7 @@ import Home from "./pages/Home.jsx";
 import MenuItem from "./pages/MenuItem.jsx";
 import { Provider } from "react-redux";
 import { store } from "./app/store.js";
+import Category from "./pages/Category.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "category/:categoryId",
+        element: <Category />
       },
       {
         path: "menu/:itemId",

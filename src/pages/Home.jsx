@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { foodCategories } from "../assets/utils/foodCategories";
 import { FaSearch } from "react-icons/fa";
 import ItemCard from "../components/ItemCard";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [error, setError] = useState("");
@@ -67,8 +68,9 @@ function Home() {
           <h2 className="font-bold text-4xl text-gray-700 my-5">Featured</h2>
           <div className="grid grid-cols-8">
             {foodCategories.map((category) => (
-              <div
+              <Link
                 key={category.id}
+                to={`/category/${category.id}`}
                 className="flex w-5/6 h-2/3 p-1 border rounded-md border-solid border-black hover:scale-102"
               >
                 <img
@@ -78,7 +80,7 @@ function Home() {
                 <p className="text-center text-xs my-auto ml-2 font-bold">
                   {category.name}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
           <h2 className="font-bold text-4xl text-gray-700 my-5">Menu</h2>
