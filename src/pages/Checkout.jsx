@@ -1,11 +1,81 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { emptyCartItems } from "../features/cart/cartSlice";
 
 function Checkout() {
+  const cartItems = useSelector((state) => state.cart.cart);
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.quantity * item.price,
+    0
+  );
+  const [orderPlaced, setOrderPlaced] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleOrder = () => {
+    setOrderPlaced(true);
+    dispatch(emptyCartItems());
+  };
+
   return (
-    <div>
-      
-    </div>
-  )
+    <>
+      {orderPlaced ? (
+        <div
+          class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative max-w-md mx-auto mt-6 text-center"
+          role="alert"
+        >
+          <strong class="font-bold">Success!</strong>
+          <span class="block sm:inline">
+            {" "}
+            Your order has been placed successfully!
+          </span>
+        </div>
+      ) : (
+        ""
+      )}
+      {!orderPlaced ? (
+        <div className="container w-1/2 h-[80vh] mx-auto p-1 my-4 mt-10 border rounded-md">
+          <div className="flex flex-col justify-between items-center h-full">
+            <h3 className="font-bold text-2xl text-gray-700 my-3 text-center">
+              Basket
+            </h3>
+            <div className="w-full flex flex-col items-center overflow-y-auto">
+              {cartItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex justify-between items-center w-[90%] h-[30%] p-1 border rounded-md border-solid border-black m-1"
+                >
+                  <img
+                    className="w-1/3 h-full object-cover"
+                    src={item.img}
+                    alt={item.name}
+                  />
+                  <p>{item.quantity}x</p>
+                  <p className="text-lg">{item.name}</p>
+                  <p>₹{item.price}</p>
+                </div>
+              ))}
+            </div>
+            <p className="w-full px-5 py-2 text-lg font-bold flex justify-between mt-2">
+              <span>Order total</span> <span>₹{total}</span>
+            </p>
+            <button
+              onClick={handleOrder}
+              className={`text-center w-1/2 mb-5 p-1 px-2 my-2 border rounded-full ${
+                cartItems.length > 0
+                  ? "bg-sky-500 text-white"
+                  : "bg-gray-300 text-gray-500"
+              }`}
+              disabled={cartItems.length === 0}
+            >
+              Confirm Order
+            </button>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+    </>
+  );
 }
 
-export default Checkout
+export default Checkout;
