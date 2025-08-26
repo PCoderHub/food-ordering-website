@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import { store } from "./app/store.js";
 import Category from "./pages/Category.jsx";
 import Cart from "./pages/Cart.jsx";
+import Checkout from "./pages/Checkout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,8 +29,12 @@ const router = createBrowserRouter([
         element: <MenuItem />,
       },
       {
-        path: "/cart",
+        path: "cart",
         element: <Cart />
+      },
+      {
+        path: "checkout",
+        element: <Checkout />
       }
     ],
   },

@@ -18,6 +18,7 @@ export const cartSlice = createSlice({
         },
         decrementQuantity: (state, action) => {
             const cartItem = state.cart.find((item) => action.payload.id === item.id)
+            if(cartItem.quantity > 0)
             cartItem.quantity --;
         },
         removeItem: (state, action) => {
