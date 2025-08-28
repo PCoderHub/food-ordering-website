@@ -2,17 +2,18 @@ import React from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <footer className="bg-gray-500 mt-20">
       <div className="flex flex-col">
-        <button className="m-1 text-white hover:underline hover:text-sky-500">
+        <button className="m-1 text-white hover:underline hover:text-sky-500"><Link to="/about" >
           About Us
-        </button>
-        <button className="m-1 text-white hover:underline hover:text-sky-500">
+        </Link></button>
+        <button className="m-1 text-white hover:underline hover:text-sky-500"><Link to="/contact">
           Contact Us
-        </button>
+        </Link></button>
       </div>
       <div className="flex justify-between">
         <div className="flex justify-evenly m-2 text-white p-2">
