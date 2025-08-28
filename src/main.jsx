@@ -12,11 +12,13 @@ import Cart from "./pages/Cart.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
