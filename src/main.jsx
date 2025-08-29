@@ -13,6 +13,7 @@ import Checkout from "./pages/Checkout.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
+import UserAuth from "./pages/UserAuth.jsx";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         path: "contact",
         element: <Contact />
       },
+      {
+        path: "user-auth",
+        element: <UserAuth />
+      }
     ],
   },
 ]);

@@ -12,7 +12,7 @@ function Contact() {
       <p className="text-xl p-2">📞 Phone: +1 (234) 567-890</p>
       <p className="text-xl p-2">📧 Email: support@hungerly.com</p>
       <p className="text-xl p-2">
-        We’re here 24/7 to make sure your experience with QuickBite is smooth,
+        We’re here 24/7 to make sure your experience with Hungerly is smooth,
         fast, and delicious.
       </p>
     </div>
