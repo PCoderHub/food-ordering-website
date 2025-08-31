@@ -14,8 +14,8 @@ function Header() {
   const quantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   const handleLogout = () => {
-    localStorage.removeItem("email");
-    localStorage.removeItem("password");
+    localStorage.removeItem("user");
+    localStorage.removeItem("isLoggedIn");
     navigate("/user-auth")
   }
 
@@ -39,7 +39,7 @@ function Header() {
             <BsCart3 className="mt-1 mr-1" />
             Cart{` (${quantity})`}
           </Link>
-          {localStorage.getItem("email") ? <button onClick={handleLogout} className="flex bg-gray-100 border rounded-sm px-2 py-1 text-sky-600 ml-1 hover:scale-105 hover:text-sky-400"><CiLogout className="mt-1 mr-1" />Logout</button> : <Link to="/user-auth" className="flex bg-gray-100 border rounded-sm px-2 py-1 text-sky-600 ml-1 hover:scale-105 hover:text-sky-400">
+          {localStorage.getItem("isLoggedIn") ? <button onClick={handleLogout} className="flex bg-gray-100 border rounded-sm px-2 py-1 text-sky-600 ml-1 hover:scale-105 hover:text-sky-400"><CiLogout className="mt-1 mr-1" />Logout</button> : <Link to="/user-auth" className="flex bg-gray-100 border rounded-sm px-2 py-1 text-sky-600 ml-1 hover:scale-105 hover:text-sky-400">
             <MdAccountCircle className="mt-1 mr-1" />
             Sign Up/Log In
           </Link>}
