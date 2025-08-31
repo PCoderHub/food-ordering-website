@@ -7,7 +7,6 @@ import {
   removeMenuItem,
   updateItem,
 } from "../features/inventory/inventorySlice";
-//import { foodCategories as initialCategories } from "../assets/utils/foodCategories";
 
 function Dashboard() {
   const initialCategories = useSelector((state) => state.inventory.inventory);
@@ -38,14 +37,14 @@ function Dashboard() {
     const name = newCategory.name.trim().toLowerCase();
 
     const exists = categories.some(
-    (cat) => cat.name.trim().toLowerCase() === name
-  );
+      (cat) => cat.name.trim().toLowerCase() === name
+    );
 
-  if (exists) {
-    alert("Category name already exists!");
-    setNewCategory({ name: "", img: "" });
-    return;
-  }
+    if (exists) {
+      alert("Category name already exists!");
+      setNewCategory({ name: "", img: "" });
+      return;
+    }
 
     const category = {
       id: Math.max(...initialCategories.map((c) => c.id)) + 1,
@@ -63,16 +62,16 @@ function Dashboard() {
 
     const itemName = newItem.name.trim().toLowerCase();
 
-  // Check if the item already exists in this category
-  const exists = category.items.some(
-    (item) => item.name.trim().toLowerCase() === itemName
-  );
+    // Check if the item already exists in this category
+    const exists = category.items.some(
+      (item) => item.name.trim().toLowerCase() === itemName
+    );
 
-  if (exists) {
-    alert("Item name already exists in this category!");
-    setNewItem({ name: "", img: "", description: "", price: "" });
-    return;
-  }
+    if (exists) {
+      alert("Item name already exists in this category!");
+      setNewItem({ name: "", img: "", description: "", price: "" });
+      return;
+    }
 
     const newItemid = category.items.length
       ? Math.max(...category.items.map((item) => item.id))
@@ -246,7 +245,6 @@ function Dashboard() {
                     </li>
                   ))}
                 </ul>
-                
               </div>
             </div>
 
@@ -297,10 +295,10 @@ function Dashboard() {
             </div>
           </div>
         ))}
-            {editingItem && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-    <div className="bg-white p-6 rounded-lg w-1/2 shadow-lg">
-      <div className="mt-4 border p-4 rounded bg-gray-50 w-1/2 mx-auto">
+        {editingItem && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white p-6 rounded-lg w-1/2 shadow-lg">
+              <div className="mt-4 border p-4 rounded bg-gray-50 w-1/2 mx-auto">
                 <h4 className="font-semibold mb-2 text-gray-700">Edit Item</h4>
                 <input
                   type="text"
@@ -355,9 +353,9 @@ function Dashboard() {
                   </button>
                 </div>
               </div>
-    </div>
-  </div>
-)}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
