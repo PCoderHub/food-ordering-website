@@ -4,28 +4,24 @@ import { MdInventory } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Dashboard from "../components/Dashboard";
 import Orders from "../components/Orders";
-import Users from "../components/Users";
 
 function Admin() {
   const menus = [
     { name: "Inventory", icon: <MdInventory /> },
     { name: "Orders", icon: <FaList /> },
-    //{ name: "Users", icon: <FaUsers /> },
   ];
 
   const [chosenMenu, setChosenMenu] = useState("Inventory");
 
   const renderAdminMenu = () => {
-    if(chosenMenu == "Inventory") {
+    if (chosenMenu == "Inventory") {
       return <Dashboard />;
-    } else if(chosenMenu === "Orders") {
+    } else if (chosenMenu === "Orders") {
       return <Orders />;
-    } else if (chosenMenu === "Users") {
-      return <Users />;
     } else {
       return "";
     }
-  }
+  };
 
   return (
     <div>
@@ -36,11 +32,11 @@ function Admin() {
             src="https://cdn-icons-png.flaticon.com/512/857/857681.png"
             alt="Logo"
           />
-          <Link 
-          to="/"
-          ><h1 className="m-1 font-bold text-4xl text-sky-600">
-            Hungerly Admin
-          </h1></Link>
+          <Link to="/">
+            <h1 className="m-1 font-bold text-4xl text-sky-600">
+              Hungerly Admin
+            </h1>
+          </Link>
         </div>
       </div>
       <div className="flex">
@@ -67,7 +63,9 @@ function Admin() {
         </ul>
 
         <div className="container h-full w-full m-10 border rounded-md">
-          <h2 className="m-1 font-bold text-3xl text-gray-600 text-center">{chosenMenu}</h2>
+          <h2 className="m-1 font-bold text-3xl text-gray-600 text-center">
+            {chosenMenu}
+          </h2>
           {renderAdminMenu()}
         </div>
       </div>

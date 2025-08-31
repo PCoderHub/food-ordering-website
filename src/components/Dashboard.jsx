@@ -34,6 +34,19 @@ function Dashboard() {
   // Add Category
   const handleAddCategory = (e) => {
     e.preventDefault();
+
+    const name = newCategory.name.trim().toLowerCase();
+
+    const exists = categories.some(
+    (cat) => cat.name.trim().toLowerCase() === name
+  );
+
+  if (exists) {
+    alert("Category name already exists!");
+    setNewCategory({ name: "", img: "" });
+    return;
+  }
+
     const category = {
       id: Math.max(...initialCategories.map((c) => c.id)) + 1,
       ...newCategory,
@@ -47,6 +60,20 @@ function Dashboard() {
   // Add Item to a Category
   const handleAddItem = (categoryId) => {
     const category = initialCategories.find((c) => c.id === categoryId);
+
+    const itemName = newItem.name.trim().toLowerCase();
+
+  // Check if the item already exists in this category
+  const exists = category.items.some(
+    (item) => item.name.trim().toLowerCase() === itemName
+  );
+
+  if (exists) {
+    alert("Item name already exists in this category!");
+    setNewItem({ name: "", img: "", description: "", price: "" });
+    return;
+  }
+
     const newItemid = category.items.length
       ? Math.max(...category.items.map((item) => item.id))
       : category.id * 100;
