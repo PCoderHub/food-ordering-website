@@ -7,7 +7,7 @@ function UserOrder() {
 
   console.log(orders);
 
-  //const userOrders = orders.length > 0 ? orders.filter((order) => order.customer === localStorage.getItem("email")) : [];
+  const userOrders = orders.length > 0 ? orders.filter((order) => order.customer === localStorage.getItem("email")) : [];
 
   return (
     <div>
@@ -17,11 +17,11 @@ function UserOrder() {
       <div className="p-6">
       <h2 className="text-3xl font-bold text-gray-700 mb-6 text-center">Orders</h2>
 
-      {orders.length === 0 ? (
+      {userOrders.length === 0 ? (
         <p className="text-gray-500 text-lg text-center">No orders yet.</p>
       ) : (
         <div className="space-y-6">
-          {orders.map((order, index) => (
+          {userOrders.map((order, index) => (
             <div
               key={index}
               className="bg-white shadow-lg rounded-lg p-5 border border-gray-200"
