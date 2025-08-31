@@ -5,12 +5,14 @@ import {
   addNewItem,
   removeCategory,
   removeMenuItem,
+  updateItem,
 } from "../features/inventory/inventorySlice";
 //import { foodCategories as initialCategories } from "../assets/utils/foodCategories";
 
 function Dashboard() {
   const initialCategories = useSelector((state) => state.inventory.inventory);
   const [categories, setCategories] = useState(initialCategories);
+  const [editingItem, setEditingItem] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -76,6 +78,41 @@ function Dashboard() {
         : cat
     );
     setCategories(updatedCategories);
+  };
+
+  const startEditingItem = (categoryId, item) => {
+    setEditingItem({ categoryId, ...item });
+  };
+
+  const handleUpdateItem = () => {
+    dispatch(
+      updateItem({
+        categoryId: editingItem.categoryId,
+        itemId: editingItem.id,
+        updatedItem: {
+          name: editingItem.name,
+          img: editingItem.img,
+          description: editingItem.description,
+          price: Number(editingItem.price),
+        },
+      })
+    );
+
+    const updatedCategories = categories.map((cat) =>
+      cat.id === editingItem.categoryId
+        ? {
+            ...cat,
+            items: cat.items.map((item) =>
+              item.id === editingItem.id
+                ? { ...item, ...editingItem, price: Number(editingItem.price) }
+                : item
+            ),
+          }
+        : cat
+    );
+
+    setCategories(updatedCategories);
+    setEditingItem(null);
   };
 
   return (
@@ -165,15 +202,24 @@ function Dashboard() {
                         <p className="font-medium text-gray-800">{item.name}</p>
                         <p className="text-sm text-gray-500">₹{item.price}</p>
                       </div>
-                      <button
-                        onClick={() => handleRemoveItem(cat.id, item.id)}
-                        className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-                      >
-                        ✕
-                      </button>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => startEditingItem(cat.id, item)}
+                          className="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleRemoveItem(cat.id, item.id)}
+                          className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </li>
                   ))}
                 </ul>
+                
               </div>
             </div>
 
@@ -224,6 +270,67 @@ function Dashboard() {
             </div>
           </div>
         ))}
+            {editingItem && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div className="bg-white p-6 rounded-lg w-1/2 shadow-lg">
+      <div className="mt-4 border p-4 rounded bg-gray-50 w-1/2 mx-auto">
+                <h4 className="font-semibold mb-2 text-gray-700">Edit Item</h4>
+                <input
+                  type="text"
+                  placeholder="Item Name"
+                  value={editingItem.name}
+                  onChange={(e) =>
+                    setEditingItem({ ...editingItem, name: e.target.value })
+                  }
+                  className="border p-2 w-full rounded-full mb-2"
+                />
+                <input
+                  type="text"
+                  placeholder="Image URL"
+                  value={editingItem.img}
+                  onChange={(e) =>
+                    setEditingItem({ ...editingItem, img: e.target.value })
+                  }
+                  className="border p-2 w-full rounded-full mb-2"
+                />
+                <textarea
+                  placeholder="Description"
+                  value={editingItem.description}
+                  onChange={(e) =>
+                    setEditingItem({
+                      ...editingItem,
+                      description: e.target.value,
+                    })
+                  }
+                  className="border p-2 w-full rounded-lg mb-2"
+                />
+                <input
+                  type="number"
+                  placeholder="Price"
+                  value={editingItem.price}
+                  onChange={(e) =>
+                    setEditingItem({ ...editingItem, price: e.target.value })
+                  }
+                  className="border p-2 w-full rounded-full mb-2"
+                />
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleUpdateItem}
+                    className="bg-green-600 text-white px-4 py-2 rounded-full"
+                  >
+                    Save
+                  </button>
+                  <button
+                    onClick={() => setEditingItem(null)}
+                    className="bg-gray-500 text-white px-4 py-2 rounded-full"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+    </div>
+  </div>
+)}
       </div>
     </div>
   );
