@@ -14,6 +14,7 @@ import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import UserAuth from "./pages/UserAuth.jsx";
+import Admin from "./pages/Admin.jsx";
 
 const router = createBrowserRouter([
   {
@@ -52,9 +53,17 @@ const router = createBrowserRouter([
       {
         path: "user-auth",
         element: <UserAuth />
-      }
+      },
+      {
+        path: "orders",
+        element: <></>
+      },
     ],
   },
+  {
+    path: "/admin",
+    element: <Admin />
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
