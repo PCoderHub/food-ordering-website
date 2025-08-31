@@ -49,6 +49,11 @@ export const inventorySlice = createSlice({
   },
 });
 
-export const { addNewCategory, addNewItem, updateItem, removeCategory, removeMenuItem } =
-  inventorySlice.actions;
+export const {
+  addNewCategory,
+  addNewItem,
+  updateItem,
+  removeCategory,
+  removeMenuItem,
+} = inventorySlice.actions;
 export default inventorySlice.reducer;

@@ -46,31 +46,35 @@ function UserAuth() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="shadow-lg rounded-xl w-full max-w-md p-8">
+    <div className="flex items-center justify-center h-screen bg-white dark:bg-gray-900">
+      <div className="shadow-lg rounded-xl w-full max-w-md p-8 bg-white dark:bg-gray-800">
         <h1 className="text-3xl font-bold text-center text-sky-600 mb-6">
           {login ? "Welcome Back!" : "Create Account"}
         </h1>
 
         <form onSubmit={login ? handleLogin : handleSignUp}>
           <div className="mb-4">
-            <label className="block text-gray-700 mb-2">Email Address</label>
+            <label className="block text-gray-700 dark:text-gray-200 mb-2">
+              Email Address
+            </label>
             <input
               type="email"
               name="email"
               placeholder="Enter your email"
-              className="w-full px-4 py-3 border rounded-full focus:outline-none focus:ring-2 focus:ring-sky-400"
+              className="w-full px-4 py-3 border rounded-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-sky-400"
               required
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700 mb-2">Password</label>
+            <label className="block text-gray-700 dark:text-gray-200 mb-2">
+              Password
+            </label>
             <input
               type="password"
               name="password"
               placeholder="Enter your password"
-              className="w-full px-4 py-3 border rounded-full focus:outline-none focus:ring-2 focus:ring-sky-400"
+              className="w-full px-4 py-3 border rounded-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-sky-400"
               required
             />
           </div>

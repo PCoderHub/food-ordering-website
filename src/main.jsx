@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "category/:categoryId",
-        element: <Category />
+        element: <Category />,
       },
       {
         path: "menu/:itemId",
@@ -37,34 +37,34 @@ const router = createBrowserRouter([
       },
       {
         path: "cart",
-        element: <Cart />
+        element: <Cart />,
       },
       {
         path: "checkout",
-        element: <Checkout />
+        element: <Checkout />,
       },
       {
         path: "about",
-        element: <About />
+        element: <About />,
       },
       {
         path: "contact",
-        element: <Contact />
+        element: <Contact />,
       },
       {
         path: "user-auth",
-        element: <UserAuth />
+        element: <UserAuth />,
       },
       {
         path: "orders",
-        element: <UserOrder />
+        element: <UserOrder />,
       },
     ],
   },
   {
     path: "/admin",
-    element: <Admin />
-  }
+    element: <Admin />,
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(

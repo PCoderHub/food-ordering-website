@@ -340,8 +340,7 @@ export const foodCategories = [
         id: 805,
         img: "https://sweetsimplevegan.com/wp-content/uploads/2022/03/close_up_Vegan_beer_battered_crispy_onion_rings_sweet_simple_vegan_2.jpg",
         name: "Onion Rings",
-        description:
-          "Crispy fried onion rings served with dip.",
+        description: "Crispy fried onion rings served with dip.",
         price: 99,
       },
     ],

@@ -45,7 +45,7 @@ function Checkout() {
     <>
       {orderPlaced ? (
         <div
-          className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative max-w-md mx-auto mt-6 text-center"
+          className="bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-300 px-4 py-3 rounded relative max-w-md mx-auto mt-6 text-center"
           role="alert"
         >
           <strong className="font-bold">Success!</strong>
@@ -58,25 +58,31 @@ function Checkout() {
         ""
       )}
       {!orderPlaced ? (
-        <div className="container w-1/2 h-[80vh] mx-auto p-1 my-4 mt-10 border rounded-md">
+        <div className="container w-1/2 h-[80vh] mx-auto p-1 my-4 mt-10 border rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800">
           <div className="flex flex-col justify-between items-center h-full">
-            <h3 className="font-bold text-2xl text-gray-700 my-3 text-center">
+            <h3 className="font-bold text-2xl text-gray-700 dark:text-gray-200 my-3 text-center">
               Basket
             </h3>
             <div className="w-full flex flex-col items-center overflow-y-auto">
               {cartItems.map((item) => (
                 <div
                   key={item.id}
-                  className="flex justify-between items-center w-[90%] h-[30%] p-1 border rounded-md border-solid border-black m-1"
+                  className="flex justify-between items-center w-[90%] h-[30%] p-1 border rounded-md border-gray-300 dark:border-gray-600 m-1 bg-gray-50 dark:bg-gray-700 m-1"
                 >
                   <img
-                    className="w-1/3 h-full object-cover"
+                    className="w-1/3 h-full object-cover rounded-sm"
                     src={item.img}
                     alt={item.name}
                   />
-                  <p>{item.quantity}x</p>
-                  <p className="text-lg">{item.name}</p>
-                  <p>₹{item.price}</p>
+                  <p className="text-gray-700 dark:text-gray-200">
+                    {item.quantity}x
+                  </p>
+                  <p className="text-gray-800 dark:text-gray-100 text-lg">
+                    {item.name}
+                  </p>
+                  <p className="text-gray-900 dark:text-gray-100">
+                    ₹{item.price}
+                  </p>
                 </div>
               ))}
             </div>

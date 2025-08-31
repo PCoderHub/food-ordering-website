@@ -46,9 +46,12 @@ function Home() {
         alt=""
         className="w-full object-cover absolute top-0 -z-40"
       />
-      <div className="flex flex-col justify-center items-center bg-white rounded-xl mx-auto w-1/2 h-48 mt-30 shadow-xl">
+      <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 rounded-xl mx-auto w-1/2 h-48 mt-30 shadow-xl">
         <div>
-          <label htmlFor="search" className="ml-2">
+          <label
+            htmlFor="search"
+            className="ml-2 text-gray-700 dark:text-gray-200"
+          >
             Search your favorite dish:
           </label>
           <br />
@@ -60,33 +63,37 @@ function Home() {
               maxLength={43}
               name="search"
               id="search"
-              className="w-96 border rounded-full p-3 px-10 mt-2"
+              className="w-96 border rounded-full p-3 px-10 mt-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400"
               onChange={handleSearch}
             />
           </div>
         </div>
       </div>
-      <div className="bg-white p-2 mt-20">
+      <div className="bg-white dark:bg-gray-900 p-2 mt-20 dark:text-white">
         <div className="container mx-auto px-4">
-          <h2 className="font-bold text-4xl text-gray-700 my-5">Featured</h2>
+          <h2 className="font-bold text-4xl text-gray-700 dark:text-gray-200 my-5">
+            Featured
+          </h2>
           <div className="grid grid-cols-8">
             {foodCategories.map((category) => (
               <Link
                 key={category.id}
                 to={`/category/${category.id}`}
-                className="flex w-5/6 h-2/3 p-1 border rounded-md border-solid border-black hover:scale-102"
+                className="flex w-5/6 h-2/3 p-1 border rounded-md border-solid border-gray-300 dark:border-gray-600 hover:scale-102"
               >
                 <img
                   src={category.img}
                   className="w-1/2 object-cover rounded-sm"
                 />
-                <p className="text-center text-xs my-auto ml-2 font-bold">
+                <p className="text-center text-xs my-auto ml-2 font-bold text-gray-800 dark:text-gray-200">
                   {category.name}
                 </p>
               </Link>
             ))}
           </div>
-          <h2 className="font-bold text-4xl text-gray-700 my-5">Menu</h2>
+          <h2 className="font-bold text-4xl text-gray-700 dark:text-gray-200 my-5">
+            Menu
+          </h2>
           <div className="grid grid-cols-4 gap-4 my-4 mt-10">
             {searchedList.length > 0 ? (
               searchedList.map((item) => <ItemCard key={item.id} item={item} />)

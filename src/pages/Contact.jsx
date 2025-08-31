@@ -3,7 +3,9 @@ import React from "react";
 function Contact() {
   return (
     <div className="container mx-auto p-4">
-      <h2 className="font-bold text-3xl text-gray-700 my-5">Contact Us</h2>
+      <h2 className="font-bold text-3xl text-gray-700 dark:text-gray-200 my-5">
+        Contact Us
+      </h2>
       <p className="text-xl p-2">
         Have questions, feedback, or need help with your order? We’d love to
         hear from you!

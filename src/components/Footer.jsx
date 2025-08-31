@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="bg-gray-500 mt-20">
+    <footer className="bg-gray-500 dark:bg-gray-900 mt-20 text-white dark:text-gray-300">
       <div className="flex flex-col">
-        <button className="m-1 text-white hover:underline hover:text-sky-500"><Link to="/about" >
-          About Us
-        </Link></button>
-        <button className="m-1 text-white hover:underline hover:text-sky-500"><Link to="/contact">
-          Contact Us
-        </Link></button>
+        <button className="m-1 text-white hover:underline hover:text-sky-500">
+          <Link to="/about">About Us</Link>
+        </button>
+        <button className="m-1 text-white hover:underline hover:text-sky-500">
+          <Link to="/contact">Contact Us</Link>
+        </button>
       </div>
       <div className="flex justify-between">
         <div className="flex justify-evenly m-2 text-white p-2">

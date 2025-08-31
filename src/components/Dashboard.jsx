@@ -142,12 +142,14 @@ function Dashboard() {
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold text-gray-600 mb-4">Manage Menu</h2>
+    <div className="p-4 text-gray-800 dark:text-gray-200">
+      <h2 className="text-xl font-bold text-gray-600 dark:text-gray-200 mb-4">
+        Manage Menu
+      </h2>
 
       {/* Add Category Form */}
-      <div className="border p-4 rounded mb-6">
-        <h3 className="text-xl font-semibold mb-2 text-gray-700">
+      <div className="border p-4 rounded mb-6 bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-600">
+        <h3 className="text-xl font-semibold mb-2 text-gray-700 dark:text-gray-100">
           Add Category
         </h3>
         <form onSubmit={handleAddCategory} className="space-y-3">
@@ -158,7 +160,7 @@ function Dashboard() {
             onChange={(e) =>
               setNewCategory({ ...newCategory, name: e.target.value })
             }
-            className="border p-2 w-full rounded-full"
+            className="border p-2 w-full rounded-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
             required
           />
           <input
@@ -168,12 +170,12 @@ function Dashboard() {
             onChange={(e) =>
               setNewCategory({ ...newCategory, img: e.target.value })
             }
-            className="border p-2 w-full rounded-full"
+            className="border p-2 w-full rounded-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
             required
           />
           <button
             type="submit"
-            className="bg-sky-600 text-white px-4 py-2 rounded-full"
+            className="bg-sky-600 text-white px-4 py-2 rounded-full "
           >
             Add Category
           </button>
@@ -183,20 +185,23 @@ function Dashboard() {
       {/* Add Items to Each Category */}
       <div>
         {categories.map((cat) => (
-          <div key={cat.id} className="border p-4 mb-4 rounded">
-            <div className="bg-white shadow-md rounded-lg p-4 mb-6 hover:shadow-lg transition duration-300">
+          <div
+            key={cat.id}
+            className="border p-4 mb-4 rounded bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
+          >
+            <div className="bg-white shadow-md rounded-lg p-4 mb-6 hover:shadow-lg transition duration-300 bg-white dark:bg-gray-800">
               {/* Category Header */}
               <div className="flex items-center gap-4">
                 <img
                   src={cat.img}
                   alt={cat.name}
-                  className="w-20 h-20 rounded-lg object-cover border"
+                  className="w-20 h-20 rounded-lg object-cover border border-gray-300 dark:border-gray-500"
                 />
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800">
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">
                     {cat.name}
                   </h3>
-                  <p className="text-gray-500 text-sm">
+                  <p className="text-gray-500 dark:text-gray-400 text-sm">
                     {cat.items.length} items
                   </p>
                 </div>
@@ -209,15 +214,15 @@ function Dashboard() {
               </div>
 
               {/* Items List */}
-              <div className="mt-4 border-t pt-4">
-                <h4 className="text-lg font-semibold text-gray-700 mb-3">
+              <div className="mt-4 border-t pt-4 border-gray-300 dark:border-gray-600">
+                <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">
                   Items
                 </h4>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                   {cat.items.map((item) => (
                     <li
                       key={item.id}
-                      className="border rounded-md p-3 flex items-center gap-3 hover:shadow-md transition"
+                      className="border rounded-md p-3 flex items-center gap-3 hover:shadow-md transition bg-gray-50 dark:bg-gray-600 border-gray-300 dark:border-gray-500"
                     >
                       <img
                         src={item.img}
@@ -225,8 +230,12 @@ function Dashboard() {
                         className="w-16 h-16 rounded object-cover"
                       />
                       <div>
-                        <p className="font-medium text-gray-800">{item.name}</p>
-                        <p className="text-sm text-gray-500">₹{item.price}</p>
+                        <p className="font-medium text-gray-800 dark:text-gray-200">
+                          {item.name}
+                        </p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          ₹{item.price}
+                        </p>
                       </div>
                       <div className="flex gap-2">
                         <button
@@ -250,7 +259,9 @@ function Dashboard() {
 
             {/* Add Item Form */}
             <div className="mt-4">
-              <h4 className="font-semibold mb-2 text-gray-700">Add Item</h4>
+              <h4 className="font-semibold mb-2 text-gray-700 dark:text-gray-300">
+                Add Item
+              </h4>
               <input
                 type="text"
                 placeholder="Item Name"
@@ -258,7 +269,7 @@ function Dashboard() {
                 onChange={(e) =>
                   setNewItem({ ...newItem, name: e.target.value })
                 }
-                className="border p-2 w-full rounded-full mb-2"
+                className="border p-2 w-full rounded-full mb-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-500"
               />
               <input
                 type="text"
@@ -267,7 +278,7 @@ function Dashboard() {
                 onChange={(e) =>
                   setNewItem({ ...newItem, img: e.target.value })
                 }
-                className="border p-2 w-full rounded-full mb-2"
+                className="border p-2 w-full rounded-full mb-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-500"
               />
               <textarea
                 placeholder="Description"
@@ -275,7 +286,7 @@ function Dashboard() {
                 onChange={(e) =>
                   setNewItem({ ...newItem, description: e.target.value })
                 }
-                className="border p-2 w-full rounded-lg mb-2"
+                className="border p-2 w-full rounded-lg mb-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-500"
               />
               <input
                 type="number"
@@ -284,7 +295,7 @@ function Dashboard() {
                 onChange={(e) =>
                   setNewItem({ ...newItem, price: e.target.value })
                 }
-                className="border p-2 w-full rounded-full mb-2"
+                className="border p-2 w-full rounded-full mb-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-500"
               />
               <button
                 onClick={() => handleAddItem(cat.id)}
@@ -297,9 +308,11 @@ function Dashboard() {
         ))}
         {editingItem && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white p-6 rounded-lg w-1/2 shadow-lg">
-              <div className="mt-4 border p-4 rounded bg-gray-50 w-1/2 mx-auto">
-                <h4 className="font-semibold mb-2 text-gray-700">Edit Item</h4>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-1/2 shadow-lg">
+              <div className="mt-4 border p-4 rounded bg-gray-50 dark:bg-gray-900 w-1/2 mx-auto">
+                <h4 className="font-semibold mb-2 text-gray-700 dark:text-gray-300">
+                  Edit Item
+                </h4>
                 <input
                   type="text"
                   placeholder="Item Name"
@@ -307,7 +320,7 @@ function Dashboard() {
                   onChange={(e) =>
                     setEditingItem({ ...editingItem, name: e.target.value })
                   }
-                  className="border p-2 w-full rounded-full mb-2"
+                  className="border p-2 w-full rounded-full mb-2 bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-500"
                 />
                 <input
                   type="text"
@@ -316,7 +329,7 @@ function Dashboard() {
                   onChange={(e) =>
                     setEditingItem({ ...editingItem, img: e.target.value })
                   }
-                  className="border p-2 w-full rounded-full mb-2"
+                  className="border p-2 w-full rounded-full mb-2 bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-500"
                 />
                 <textarea
                   placeholder="Description"
@@ -327,7 +340,7 @@ function Dashboard() {
                       description: e.target.value,
                     })
                   }
-                  className="border p-2 w-full rounded-lg mb-2"
+                  className="border p-2 w-full rounded-lg mb-2 bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-500"
                 />
                 <input
                   type="number"
@@ -336,7 +349,7 @@ function Dashboard() {
                   onChange={(e) =>
                     setEditingItem({ ...editingItem, price: e.target.value })
                   }
-                  className="border p-2 w-full rounded-full mb-2"
+                  className="border p-2 w-full rounded-full mb-2 bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-500"
                 />
                 <div className="flex gap-2">
                   <button
