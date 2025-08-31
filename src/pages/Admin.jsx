@@ -1,21 +1,22 @@
 import React, { useState } from "react";
-import { FaTachometerAlt, FaList, FaUsers } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
+import { FaList } from "react-icons/fa";
+import { MdInventory } from "react-icons/md";
+import { Link } from "react-router-dom";
 import Dashboard from "../components/Dashboard";
 import Orders from "../components/Orders";
 import Users from "../components/Users";
 
 function Admin() {
   const menus = [
-    { name: "Dashboard", icon: <FaTachometerAlt /> },
+    { name: "Inventory", icon: <MdInventory /> },
     { name: "Orders", icon: <FaList /> },
-    { name: "Users", icon: <FaUsers /> },
+    //{ name: "Users", icon: <FaUsers /> },
   ];
 
-  const [chosenMenu, setChosenMenu] = useState("Dashboard");
+  const [chosenMenu, setChosenMenu] = useState("Inventory");
 
   const renderAdminMenu = () => {
-    if(chosenMenu == "Dashboard") {
+    if(chosenMenu == "Inventory") {
       return <Dashboard />;
     } else if(chosenMenu === "Orders") {
       return <Orders />;
@@ -45,12 +46,12 @@ function Admin() {
       <div className="flex">
         <ul className="pt-6 w-1/5 px-2">
           {menus.map((menu, index) => (
-            <NavLink
+            <button
               key={index}
               onClick={() => setChosenMenu(menu.name)}
               className={`flex items-center gap-x-4 p-3 rounded-md cursor-pointer text-lg mb-2
-        hover:bg-gray-200 transition-all duration-200
-        ${index === 0 ? "bg-gray-200" : ""} // Active menu example
+        hover:bg-gray-200 transition-all duration-200 w-full
+        ${chosenMenu === menu.name ? "bg-gray-200" : ""} 
       `}
             >
               <span className="text-xl">{menu.icon}</span>
@@ -61,7 +62,7 @@ function Admin() {
               >
                 {menu.name}
               </span>
-            </NavLink>
+            </button>
           ))}
         </ul>
 

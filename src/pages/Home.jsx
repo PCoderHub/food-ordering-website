@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { foodCategories } from "../assets/utils/foodCategories";
+//import { foodCategories } from "../assets/utils/foodCategories";
 import { FaSearch } from "react-icons/fa";
 import ItemCard from "../components/ItemCard";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Home() {
   const [error, setError] = useState("");
+
+  const foodCategories = useSelector((state) => state.inventory.inventory);
 
   const allFoodItems = [];
   foodCategories.forEach((category) => {

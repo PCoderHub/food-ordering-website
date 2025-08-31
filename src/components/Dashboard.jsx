@@ -1,8 +1,18 @@
 import React, { useState } from "react";
-import { foodCategories as initialCategories } from "../assets/utils/foodCategories";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addNewCategory,
+  addNewItem,
+  removeCategory,
+  removeMenuItem,
+} from "../features/inventory/inventorySlice";
+//import { foodCategories as initialCategories } from "../assets/utils/foodCategories";
 
 function Dashboard() {
+  const initialCategories = useSelector((state) => state.inventory.inventory);
   const [categories, setCategories] = useState(initialCategories);
+
+  const dispatch = useDispatch();
 
   // State for new category
   const [newCategory, setNewCategory] = useState({
@@ -23,28 +33,49 @@ function Dashboard() {
   const handleAddCategory = (e) => {
     e.preventDefault();
     const category = {
-      id: Date.now(),
+      id: Math.max(...initialCategories.map((c) => c.id)) + 1,
       ...newCategory,
       items: [],
     };
+    dispatch(addNewCategory(category));
     setCategories([...categories, category]);
     setNewCategory({ name: "", img: "" });
   };
 
   // Add Item to a Category
   const handleAddItem = (categoryId) => {
+    const category = initialCategories.find((c) => c.id === categoryId);
+    const newItemid = category.items.length
+      ? Math.max(...category.items.map((item) => item.id))
+      : category.id * 100;
     const item = {
-      id: Date.now(),
+      id: newItemid + 1,
       ...newItem,
       price: Number(newItem.price),
     };
 
+    dispatch(addNewItem({ categoryId, item }));
     const updatedCategories = categories.map((cat) =>
       cat.id === categoryId ? { ...cat, items: [...cat.items, item] } : cat
     );
     setCategories(updatedCategories);
 
     setNewItem({ name: "", img: "", description: "", price: "" });
+  };
+
+  const handleRemoveCategory = (categoryId) => {
+    dispatch(removeCategory(categoryId));
+    setCategories(categories.filter((cat) => cat.id !== categoryId));
+  };
+
+  const handleRemoveItem = (categoryId, itemId) => {
+    dispatch(removeMenuItem({ categoryId, itemId }));
+    const updatedCategories = categories.map((cat) =>
+      cat.id === categoryId
+        ? { ...cat, items: cat.items.filter((item) => item.id !== itemId) }
+        : cat
+    );
+    setCategories(updatedCategories);
   };
 
   return (
@@ -90,14 +121,6 @@ function Dashboard() {
       <div>
         {categories.map((cat) => (
           <div key={cat.id} className="border p-4 mb-4 rounded">
-            {/* <h3 className="text-lg font-bold text-gray-700">{cat.name}</h3>
-            <img src={cat.img} alt={cat.name} className="w-32 h-20 object-cover my-2" />
-            <ul className="ml-6">
-              {cat.items.map((item) => (
-                <li key={item.id}>{item.name} - ₹{item.price}</li>
-              ))}
-            </ul> */}
-
             <div className="bg-white shadow-md rounded-lg p-4 mb-6 hover:shadow-lg transition duration-300">
               {/* Category Header */}
               <div className="flex items-center gap-4">
@@ -114,6 +137,12 @@ function Dashboard() {
                     {cat.items.length} items
                   </p>
                 </div>
+                <button
+                  onClick={() => handleRemoveCategory(cat.id)}
+                  className="bg-red-500 text-white px-3 py-1 rounded-full hover:bg-red-600"
+                >
+                  Remove
+                </button>
               </div>
 
               {/* Items List */}
@@ -136,6 +165,12 @@ function Dashboard() {
                         <p className="font-medium text-gray-800">{item.name}</p>
                         <p className="text-sm text-gray-500">₹{item.price}</p>
                       </div>
+                      <button
+                        onClick={() => handleRemoveItem(cat.id, item.id)}
+                        className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                      >
+                        ✕
+                      </button>
                     </li>
                   ))}
                 </ul>

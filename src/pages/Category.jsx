@@ -1,12 +1,15 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { foodCategories } from '../assets/utils/foodCategories';
 import ItemCard from '../components/ItemCard';
+import { useSelector } from 'react-redux';
 
 function Category() {
 
+  const foodCategories = useSelector((state) => state.inventory.inventory);
+
     const { categoryId } = useParams();
     const categorySelected = foodCategories.filter((category) => category.id === parseInt(categoryId))
+    console.log(categorySelected)
 
   return (
     <div className="container mx-auto px-4">

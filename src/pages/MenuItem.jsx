@@ -1,10 +1,11 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
-import { foodCategories } from '../assets/utils/foodCategories';
 import { incrementQuantity, saveCartItem } from '../features/cart/cartSlice';
 
 function MenuItem() {
+
+  const foodCategories = useSelector((state) => state.inventory.inventory);
 
     const item = useSelector((state) => state.item.item);
     const cartItems = useSelector((state) => state.cart.cart);
