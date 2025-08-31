@@ -15,6 +15,7 @@ import Contact from "./pages/Contact.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import UserAuth from "./pages/UserAuth.jsx";
 import Admin from "./pages/Admin.jsx";
+import UserOrder from "./pages/UserOrder.jsx";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path: "orders",
-        element: <></>
+        element: <UserOrder />
       },
     ],
   },

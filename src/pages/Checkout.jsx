@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { emptyCartItems } from "../features/cart/cartSlice";
+import { addUserOrder } from "../features/orders/orderSlice";
 
 function Checkout() {
   const cartItems = useSelector((state) => state.cart.cart);
@@ -13,6 +14,14 @@ function Checkout() {
 
   const handleOrder = () => {
     setOrderPlaced(true);
+    const order = {
+      orderTime: new Date(Date.now()).toLocaleString(),
+      customer: localStorage.getItem("email"),
+      items: cartItems,
+      total: total
+    }
+
+    dispatch(addUserOrder(order));
     dispatch(emptyCartItems());
   };
 
@@ -20,11 +29,11 @@ function Checkout() {
     <>
       {orderPlaced ? (
         <div
-          class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative max-w-md mx-auto mt-6 text-center"
+          className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative max-w-md mx-auto mt-6 text-center"
           role="alert"
         >
-          <strong class="font-bold">Success!</strong>
-          <span class="block sm:inline">
+          <strong className="font-bold">Success!</strong>
+          <span className="block sm:inline">
             {" "}
             Your order has been placed successfully!
           </span>
