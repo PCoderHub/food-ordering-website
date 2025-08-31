@@ -5,6 +5,10 @@ import { addUserOrder } from "../features/orders/orderSlice";
 
 function Checkout() {
   const cartItems = useSelector((state) => state.cart.cart);
+
+  const [processingPayment, setProcessingPayment] = useState(false);
+  const [paymentDone, setPaymentDone] = useState(false);
+
   const total = cartItems.reduce(
     (sum, item) => sum + item.quantity * item.price,
     0
@@ -12,14 +16,26 @@ function Checkout() {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const dispatch = useDispatch();
 
+  const handlePayment = () => {
+    setProcessingPayment(true);
+
+    setTimeout(() => {
+      setProcessingPayment(false);
+      setPaymentDone(true);
+
+      // Place order after "payment success"
+      handleOrder();
+    }, 3000); // simulate 3-sec payment process
+  };
+
   const handleOrder = () => {
     setOrderPlaced(true);
     const order = {
       orderTime: new Date(Date.now()).toLocaleString(),
       customer: localStorage.getItem("email"),
       items: cartItems,
-      total: total
-    }
+      total: total,
+    };
 
     dispatch(addUserOrder(order));
     dispatch(emptyCartItems());
@@ -67,7 +83,7 @@ function Checkout() {
             <p className="w-full px-5 py-2 text-lg font-bold flex justify-between mt-2">
               <span>Order total</span> <span>₹{total}</span>
             </p>
-            <button
+            {/* <button
               onClick={handleOrder}
               className={`text-center w-1/2 mb-5 p-1 px-2 my-2 border rounded-full ${
                 cartItems.length > 0
@@ -77,7 +93,32 @@ function Checkout() {
               disabled={cartItems.length === 0}
             >
               Confirm Order
-            </button>
+            </button> */}
+            {!processingPayment && !paymentDone && (
+              <button
+                onClick={handlePayment}
+                className={`text-center w-1/2 mb-5 p-1 px-2 my-2 border rounded-full ${
+                  cartItems.length > 0
+                    ? "bg-sky-500 text-white"
+                    : "bg-gray-300 text-gray-500"
+                }`}
+                disabled={cartItems.length === 0}
+              >
+                Pay ₹{total}
+              </button>
+            )}
+
+            {processingPayment && (
+              <p className="text-lg font-semibold text-blue-500 my-3">
+                Processing payment...
+              </p>
+            )}
+
+            {paymentDone && (
+              <p className="text-lg font-semibold text-green-500 my-3">
+                Payment successful! Placing order...
+              </p>
+            )}
           </div>
         </div>
       ) : (
