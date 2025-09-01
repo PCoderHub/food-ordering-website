@@ -191,7 +191,7 @@ function Dashboard() {
           >
             <div className="bg-white shadow-md rounded-lg p-4 mb-6 hover:shadow-lg transition duration-300 bg-white dark:bg-gray-800">
               {/* Category Header */}
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <img
                   src={cat.img}
                   alt={cat.name}
@@ -222,7 +222,7 @@ function Dashboard() {
                   {cat.items.map((item) => (
                     <li
                       key={item.id}
-                      className="border rounded-md p-3 flex items-center gap-3 hover:shadow-md transition bg-gray-50 dark:bg-gray-600 border-gray-300 dark:border-gray-500"
+                      className="border rounded-md p-3 flex flex-col sm:flex-row items-center gap-3 hover:shadow-md transition bg-gray-50 dark:bg-gray-600 border-gray-300 dark:border-gray-500"
                     >
                       <img
                         src={item.img}
@@ -308,8 +308,8 @@ function Dashboard() {
         ))}
         {editingItem && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-1/2 shadow-lg">
-              <div className="mt-4 border p-4 rounded bg-gray-50 dark:bg-gray-900 w-1/2 mx-auto">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+              <div className="mt-4 border p-4 rounded bg-gray-50 dark:bg-gray-900 w-full sm:w-3/4 md:w-1/2 mx-auto">
                 <h4 className="font-semibold mb-2 text-gray-700 dark:text-gray-300">
                   Edit Item
                 </h4>

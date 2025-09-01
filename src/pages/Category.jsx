@@ -17,7 +17,7 @@ function Category() {
       <h2 className="font-bold text-4xl text-gray-700 dark:text-gray-100 my-5 text-center">
         {categorySelected[0].name}
       </h2>
-      <div className="grid grid-cols-4 gap-4 my-4 mt-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-4 mt-10">
         {categorySelected[0].items.map((item) => (
           <ItemCard key={item.id} item={item} />
         ))}

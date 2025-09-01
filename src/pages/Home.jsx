@@ -44,9 +44,9 @@ function Home() {
       <img
         src="https://c8.alamy.com/comp/P3WFK6/food-cooking-ingredient-food-background-on-white-wooden-table-top-view-long-banner-format-P3WFK6.jpg"
         alt=""
-        className="w-full object-cover absolute top-0 -z-40"
+        className="hidden md:block w-full object-cover absolute top-0 -z-40"
       />
-      <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 rounded-xl mx-auto w-1/2 h-48 mt-30 shadow-xl">
+      <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 rounded-xl mx-auto w-11/12 sm:w-3/4 md:w-1/2 h-48 mt-30 shadow-xl">
         <div>
           <label
             htmlFor="search"
@@ -63,7 +63,7 @@ function Home() {
               maxLength={43}
               name="search"
               id="search"
-              className="w-96 border rounded-full p-3 px-10 mt-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400"
+              className="w-full md:w-96 border rounded-full p-3 px-10 mt-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400"
               onChange={handleSearch}
             />
           </div>
@@ -74,7 +74,7 @@ function Home() {
           <h2 className="font-bold text-4xl text-gray-700 dark:text-gray-200 my-5">
             Featured
           </h2>
-          <div className="grid grid-cols-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {foodCategories.map((category) => (
               <Link
                 key={category.id}
@@ -94,7 +94,7 @@ function Home() {
           <h2 className="font-bold text-4xl text-gray-700 dark:text-gray-200 my-5">
             Menu
           </h2>
-          <div className="grid grid-cols-4 gap-4 my-4 mt-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-4 mt-10">
             {searchedList.length > 0 ? (
               searchedList.map((item) => <ItemCard key={item.id} item={item} />)
             ) : (

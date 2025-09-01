@@ -21,9 +21,9 @@ function CartItem({ item }) {
   };
 
   return (
-    <div className="flex justify-between items-center w-[90%] h-[30%] p-1 border rounded-md border-solid border-gray-300 dark:border-gray-600 m-1">
+    <div className="flex flex-col sm:flex-row justify-between items-center w-full sm:w-[90%] h-full sm:h-[30%] p-1 border rounded-md border-solid border-gray-300 dark:border-gray-600 m-1">
       <img
-        className="w-1/3 h-full object-cover"
+        className="w-full sm:w-1/3 h-32 sm:h-full object-cover"
         src={item.img}
         alt={item.name}
       />

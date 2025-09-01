@@ -30,7 +30,7 @@ function MenuItem() {
   };
 
   return (
-    <div className="container w-1/2 h-[80vh] mx-auto p-1 my-4 mt-10 border rounded-md">
+    <div className="container w-11/12 md:w-3/4 lg:w-1/2 h-[80vh] mx-auto p-1 my-4 mt-10 border rounded-md">
       <img
         className="w-full h-2/3 object-cover rounded-md"
         src={item.img}

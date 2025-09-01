@@ -34,8 +34,8 @@ function Header() {
 
   return (
     <header className="bg-transparent dark:bg-gray-800 pb-1">
-      <div className="flex justify-between max-w-[1400px] mx-auto px-2 text-gray-800 dark:text-gray-100">
-        <Link to="/" className="flex">
+      <div className="flex flex-col md:flex-row justify-between items-center max-w-[1400px] mx-auto px-2 text-gray-800 dark:text-gray-100">
+        <Link to="/" className="flex items-center mb-4 md:mb-0">
           <img
             className="w-10 h-10 mt-2"
             src="https://cdn-icons-png.flaticon.com/512/857/857681.png"
@@ -45,7 +45,7 @@ function Header() {
             hungerly
           </h1>
         </Link>
-        <div className="flex mt-4">
+        <div className="flex gap-2 flex-col md:flex-row items-center">
           <Link
             to="/admin"
             className="flex bg-gray-100 dark:bg-gray-700 border rounded-sm px-2 py-1 text-sky-600 dark:text-sky-400 mx-1 hover:scale-105 hover:text-sky-400"

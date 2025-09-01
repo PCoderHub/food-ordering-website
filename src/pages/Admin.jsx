@@ -37,8 +37,8 @@ function Admin() {
           </h1>
         </Link>
       </div>
-      <div className="flex">
-        <ul className="pt-6 w-1/5 px-2">
+      <div className="flex flex-col md:flex-row">
+        <ul className="flex md:flex-col justify-around md:justify-start md:w-1/5 px-2 py-4">
           {menus.map((menu, index) => (
             <button
               key={index}
@@ -62,7 +62,7 @@ function Admin() {
           ))}
         </ul>
 
-        <div className="container h-full w-full m-10 border rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800">
+        <div className="flex-1 container mx-auto p-4 md:m-4  border rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800">
           <h2 className="m-1 font-bold text-3xl text-gray-600 dark:text-gray-200 text-center">
             {chosenMenu}
           </h2>

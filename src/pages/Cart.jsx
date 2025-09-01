@@ -17,7 +17,7 @@ function Cart() {
   };
 
   return (
-    <div className="container w-1/2 h-[80vh] mx-auto p-1 my-4 mt-10 border border-gray-300 dark:border-gray-600 rounded-md">
+    <div className="container w-11/12 md:w-3/4 lg:w-1/2 h-[80vh] mx-auto p-1 my-4 mt-10 border border-gray-300 dark:border-gray-600 rounded-md">
       <div className="flex flex-col justify-between items-center h-full">
         {cartItems.length > 0 ? (
           <>
