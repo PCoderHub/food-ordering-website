@@ -32,7 +32,7 @@ function Checkout() {
     setOrderPlaced(true);
     const order = {
       orderTime: new Date(Date.now()).toLocaleString(),
-      customer: localStorage.getItem("email"),
+      customer: JSON.parse(localStorage.getItem("user")).email,
       items: cartItems,
       total: total,
     };

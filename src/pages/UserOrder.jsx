@@ -9,7 +9,8 @@ function UserOrder() {
   const userOrders =
     orders.length > 0
       ? orders.filter(
-          (order) => order.customer === localStorage.getItem("email")
+          (order) =>
+            order.customer === JSON.parse(localStorage.getItem("user")).email
         )
       : [];
 

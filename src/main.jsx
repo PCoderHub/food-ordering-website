@@ -16,6 +16,7 @@ import ErrorPage from "./pages/ErrorPage.jsx";
 import UserAuth from "./pages/UserAuth.jsx";
 import Admin from "./pages/Admin.jsx";
 import UserOrder from "./pages/UserOrder.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +42,11 @@ const router = createBrowserRouter([
       },
       {
         path: "checkout",
-        element: <Checkout />,
+        element: (
+          <ProtectedRoute allowedRoles={["user"]}>
+            <Checkout />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "about",
@@ -57,13 +62,21 @@ const router = createBrowserRouter([
       },
       {
         path: "orders",
-        element: <UserOrder />,
+        element: (
+          <ProtectedRoute allowedRoles={["user"]}>
+            <UserOrder />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
   {
     path: "/admin",
-    element: <Admin />,
+    element: (
+      <ProtectedRoute allowedRoles={["admin"]}>
+        <Admin />
+      </ProtectedRoute>
+    ),
   },
 ]);
 
