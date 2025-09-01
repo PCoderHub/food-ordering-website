@@ -28,7 +28,7 @@ This is a Food Delivery Web Application built with React and Redux that allows u
 - Clear Cart : Remove all items from the cart.
 - Order Summary (/checkout) : Review your items before confirming the order.
 - My Orders page (/orders): To view orders placed by the loggedin user
-- Checkout (/checkout): See an Order Success message after placing an order.
+- Checkout (/checkout): See an Order Success message after placing an order (Access only for users).
 - Dark Mode: Toggle dark/light theme from the navbar.
 - About Us (/about) & Contact Us (/contact) : Static informational pages.
 - Admin Page (/admin) : To add/remove categories, add/update/remove items for inventory management. View orders made by users.
