@@ -16,9 +16,6 @@ function UserOrder() {
 
   return (
     <div>
-      {/* {userOrders.length > 0 ? userOrders.map((order) => order.items.map((item) => <div>
-        <p>{item.name}</p>
-      </div>)) : <p>No Orders Yet</p>} */}
       <div className="p-6">
         <h2 className="text-3xl font-bold text-gray-700 dark:text-gray-200 mb-6 text-center">
           Orders

@@ -43,6 +43,7 @@ function Checkout() {
 
   return (
     <>
+      {/* Order successful message */}
       {orderPlaced ? (
         <div
           className="bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-300 px-4 py-3 rounded relative max-w-md mx-2 sm:mx-auto mt-6 text-center"
@@ -90,6 +91,7 @@ function Checkout() {
               <span>Order total</span> <span>₹{total}</span>
             </p>
 
+            {/* Mocking payment processing */}
             {!processingPayment && !paymentDone && (
               <button
                 onClick={handlePayment}

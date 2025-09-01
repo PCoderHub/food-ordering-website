@@ -7,6 +7,7 @@ import {
   removeMenuItem,
   updateItem,
 } from "../features/inventory/inventorySlice";
+import AddItemForm from "./AddItemForm";
 
 function Dashboard() {
   const initialCategories = useSelector((state) => state.inventory.inventory);
@@ -20,14 +21,6 @@ function Dashboard() {
     name: "",
     img: "",
     items: [],
-  });
-
-  // State for new item
-  const [newItem, setNewItem] = useState({
-    name: "",
-    img: "",
-    description: "",
-    price: "",
   });
 
   // Add Category
@@ -57,7 +50,7 @@ function Dashboard() {
   };
 
   // Add Item to a Category
-  const handleAddItem = (categoryId) => {
+  const handleAddItem = (categoryId, newItem) => {
     const category = initialCategories.find((c) => c.id === categoryId);
 
     const itemName = newItem.name.trim().toLowerCase();
@@ -69,7 +62,6 @@ function Dashboard() {
 
     if (exists) {
       alert("Item name already exists in this category!");
-      setNewItem({ name: "", img: "", description: "", price: "" });
       return;
     }
 
@@ -87,8 +79,6 @@ function Dashboard() {
       cat.id === categoryId ? { ...cat, items: [...cat.items, item] } : cat
     );
     setCategories(updatedCategories);
-
-    setNewItem({ name: "", img: "", description: "", price: "" });
   };
 
   const handleRemoveCategory = (categoryId) => {
@@ -258,54 +248,11 @@ function Dashboard() {
             </div>
 
             {/* Add Item Form */}
-            <div className="mt-4">
-              <h4 className="font-semibold mb-2 text-gray-700 dark:text-gray-300">
-                Add Item
-              </h4>
-              <input
-                type="text"
-                placeholder="Item Name"
-                value={newItem.name}
-                onChange={(e) =>
-                  setNewItem({ ...newItem, name: e.target.value })
-                }
-                className="border p-2 w-full rounded-full mb-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-500"
-              />
-              <input
-                type="text"
-                placeholder="Image URL"
-                value={newItem.img}
-                onChange={(e) =>
-                  setNewItem({ ...newItem, img: e.target.value })
-                }
-                className="border p-2 w-full rounded-full mb-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-500"
-              />
-              <textarea
-                placeholder="Description"
-                value={newItem.description}
-                onChange={(e) =>
-                  setNewItem({ ...newItem, description: e.target.value })
-                }
-                className="border p-2 w-full rounded-lg mb-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-500"
-              />
-              <input
-                type="number"
-                placeholder="Price"
-                value={newItem.price}
-                onChange={(e) =>
-                  setNewItem({ ...newItem, price: e.target.value })
-                }
-                className="border p-2 w-full rounded-full mb-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-500"
-              />
-              <button
-                onClick={() => handleAddItem(cat.id)}
-                className="bg-sky-600 text-white px-4 py-2 rounded-full"
-              >
-                Add Item
-              </button>
-            </div>
+            <AddItemForm categoryId={cat.id} onAddItem={handleAddItem} />
           </div>
         ))}
+
+        {/* To edit item details */}
         {editingItem && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">

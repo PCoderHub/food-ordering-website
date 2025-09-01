@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-//import { foodCategories } from "../assets/utils/foodCategories";
 import { FaSearch } from "react-icons/fa";
 import ItemCard from "../components/ItemCard";
 import { Link } from "react-router-dom";
@@ -69,6 +68,8 @@ function Home() {
           </div>
         </div>
       </div>
+
+      {/* Filtered items based on categories */}
       <div className="bg-white dark:bg-gray-900 p-2 mt-20 dark:text-white">
         <div className="container mx-auto px-4">
           <h2 className="font-bold text-4xl text-gray-700 dark:text-gray-200 my-5">
@@ -91,6 +92,8 @@ function Home() {
               </Link>
             ))}
           </div>
+
+          {/* All menu items */}
           <h2 className="font-bold text-4xl text-gray-700 dark:text-gray-200 my-5">
             Menu
           </h2>
