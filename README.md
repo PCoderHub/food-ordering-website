@@ -1,4 +1,4 @@
-# 🍔 Food Delivery App
+# 🍔 Food Delivery App [Live Demo](https://hungerly.netlify.app/)
 
 ## 📌 Overview
 This is a Food Delivery Web Application built with React and Redux that allows users to browse a menu, filter food items by category, search for specific dishes, add them to a cart, and place an order. It includes dark mode support and is mobile-friendly for a smooth user experience.
