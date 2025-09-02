@@ -3,6 +3,7 @@ import itemReducer from "../features/item/itemSlice";
 import cartReducer from "../features/cart/cartSlice";
 import inventoryReducer from "../features/inventory/inventorySlice";
 import orderReducer from "../features/orders/orderSlice";
+import themeReducer from "../features/theme/themeSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     cart: cartReducer,
     inventory: inventoryReducer,
     orders: orderReducer,
+    theme: themeReducer,
   },
 });

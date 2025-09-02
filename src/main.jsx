@@ -17,6 +17,7 @@ import UserAuth from "./pages/UserAuth.jsx";
 import Admin from "./pages/Admin.jsx";
 import UserOrder from "./pages/UserOrder.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import ThemeManager from "./ThemeManager.jsx";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
+      <ThemeManager />
       <RouterProvider router={router} />
     </Provider>
   </StrictMode>

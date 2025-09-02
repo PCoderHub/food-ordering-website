@@ -1,26 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MdAccountCircle } from "react-icons/md";
 import { BsCart3 } from "react-icons/bs";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CiLogout } from "react-icons/ci";
 import { IoFastFood } from "react-icons/io5";
 import { RiAdminLine } from "react-icons/ri";
+import { toggleTheme } from "../features/theme/themeSlice";
 
 function Header() {
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("theme") === "dark"
-  );
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
+  const dispatch = useDispatch();
+  const darkMode = useSelector((state) => state.theme.darkMode);
 
   const navigate = useNavigate();
   const cartItems = useSelector((state) => state.cart.cart);
@@ -85,7 +75,7 @@ function Header() {
             </Link>
           )}
           <button
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={() => dispatch(toggleTheme())}
             className=" bg-gray-100 dark:bg-gray-700 px-4 py-1 mx-1 border rounded-sm text-sky-600 dark:text-sky-400 mx-1 hover:scale-105 hover:text-sky-400"
           >
             {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
